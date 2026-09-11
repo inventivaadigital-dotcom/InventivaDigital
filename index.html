@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Inventiva Digital — ideias que movimentam marcas. Estratégia, gestão digital, tráfego pago, sites, Google Ads, Analytics e gestão de contabilidade.">
+<title>Inventiva Digital — Ideias que movimentam marcas</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--bg:#050507;--panel:#0c0b11;--white:#f8f7fb;--muted:#a9a5b3;--coral:#ff4f86;--pink:#ff1f86;--purple:#8b36ff;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif}a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+#intro{position:fixed;inset:0;z-index:99;background:#020204;display:grid;place-items:center;overflow:hidden;transition:opacity .8s,visibility .8s}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-stage{position:relative;width:min(280px,58vw);aspect-ratio:1/1;display:grid;place-items:center;z-index:3}
+.intro-head{width:82%;position:relative;z-index:1;filter:drop-shadow(0 0 28px rgba(255,45,145,.4));animation:logoPulse 1.1s ease-in-out infinite;transition:opacity .6s ease}
+.intro-full{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.85);filter:drop-shadow(0 0 30px rgba(255,45,145,.35));transition:opacity .8s ease,transform .8s ease}
+#intro.reveal .intro-head{opacity:0}
+#intro.reveal .intro-full{opacity:1;transform:scale(1)}
+@keyframes logoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.rain-ico{position:fixed;top:0;left:0;width:44px;height:44px;border-radius:50%;background-size:cover;background-position:center;opacity:0;pointer-events:none;z-index:2;animation-name:fallIco;animation-timing-function:cubic-bezier(.4,.1,.4,1);animation-fill-mode:forwards}
+@keyframes fallIco{0%{opacity:0;transform:translate(-50%,-50%) scale(.25)}12%{opacity:1;transform:translate(-50%,-50%) scale(1)}38%{transform:translate(calc(-50% + var(--bx)),calc(-50% + var(--by))) scale(1)}100%{opacity:1;transform:translate(calc(-50% + var(--fx)),calc(-50% + var(--fy))) scale(.85) rotate(160deg)}}
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(5,5,7,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.brand img{width:52px;height:52px;object-fit:contain}.brand span{font-weight:700;letter-spacing:2px}.navlinks{display:flex;gap:28px;font-size:14px;color:#d9d6df}.navlinks a:hover{color:var(--coral)}.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:999px;background:linear-gradient(100deg,var(--coral),var(--pink),var(--purple));font-weight:700;box-shadow:0 12px 30px rgba(255,31,134,.2)}
+.hero{min-height:720px;padding-top:110px;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 70% 45%,rgba(139,54,255,.25),transparent 32%),radial-gradient(circle at 45% 55%,rgba(255,31,134,.13),transparent 30%);filter:blur(20px)}.eyebrow{color:var(--coral);font-size:12px;letter-spacing:3px;font-weight:700}.hero h1{font:700 clamp(48px,6vw,82px)/.95 "Playfair Display",serif;margin:18px 0}.gradient{background:linear-gradient(90deg,#fff,var(--coral),var(--purple));-webkit-background-clip:text;color:transparent}.hero p{max-width:560px;color:var(--muted);font-size:18px;line-height:1.7}.hero-art{position:relative;z-index:1}.hero-art img{width:100%;max-width:690px;display:block;margin:auto;filter:drop-shadow(0 0 50px rgba(139,54,255,.28))}
+section{padding:100px 0;border-top:1px solid rgba(255,255,255,.07)}.section-kicker{font-size:11px;letter-spacing:3px;color:var(--coral);font-weight:700}.section-title{font:700 clamp(34px,4vw,58px)/1 "Playfair Display",serif;margin:12px 0 22px}.muted{color:var(--muted);line-height:1.7}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}.card{background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;padding:34px 28px;min-height:170px;transition:.3s}.card:hover{transform:translateY(-5px);border-color:rgba(255,79,134,.5);box-shadow:0 20px 50px rgba(0,0,0,.25)}.icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,var(--coral),var(--purple));display:grid;place-items:center;margin-bottom:20px;font-size:18px}.icon img{width:26px;height:26px}.card h3{margin:0 0 10px;font-size:19px;line-height:1.3}.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.clients{display:flex;align-items:center;gap:30px;overflow:hidden;margin-top:35px;padding:25px 0}.client{height:92px;min-width:190px;border:1px solid var(--line);border-radius:18px;background:#fff;display:grid;place-items:center;padding:12px}.client img{max-width:170px;max-height:70px;object-fit:contain}.client.dark{background:#09090d}.client.dark img{filter:none}
+.case{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}.case-img{background:linear-gradient(135deg,#16131d,#08070b);border:1px solid var(--line);border-radius:30px;padding:24px;overflow:hidden}.case-img img{width:100%;display:block;border-radius:20px}.checks{list-style:none;padding:0;margin:30px 0}.checks li{margin:14px 0;color:#ddd}.checks li:before{content:"✓";color:var(--coral);font-weight:900;margin-right:12px}
+.process{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:50px}.step{border-top:1px solid var(--coral);padding-top:20px}.num{color:var(--coral);font-weight:800}.step h4{margin:12px 0 7px}.step p{font-size:12px;color:var(--muted);line-height:1.5}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}.tool{display:flex;gap:20px;align-items:center;border:1px solid var(--line);padding:20px;border-radius:18px}.tool img{width:62px;height:62px}.tool strong{display:block;margin-bottom:6px}.tool span{color:var(--muted);font-size:13px}
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.quote{border:1px solid var(--line);background:var(--panel);padding:26px;border-radius:18px}.quote p{color:#ddd;line-height:1.6;font-size:14px}.quote small{color:var(--coral)}
+.cta{padding:70px;border-radius:30px;background:linear-gradient(110deg,var(--coral),#e6229a 45%,var(--purple));display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{font:700 46px/1 "Playfair Display",serif;margin:0}.cta p{margin:10px 0 0;color:#fff9}.cta .btn{background:#050507;box-shadow:none}
+footer{padding:45px 0;color:var(--muted);border-top:1px solid var(--line)}.footer-row{display:flex;justify-content:space-between;align-items:center}.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:70px;height:70px;object-fit:contain}.footer-brand b{color:#fff}
+@media(max-width:850px){.navlinks{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:125px 0 70px}.hero h1{font-size:52px}.hero-art{margin-top:25px}.services,.quote-grid{grid-template-columns:1fr}.case{grid-template-columns:1fr;gap:30px}.process{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.cta{padding:40px 28px;display:block}.cta h2{font-size:38px}.cta .btn{margin-top:25px}.client{min-width:160px}.client img{max-width:140px}}
+</style>
+</head>
+<body>
+<div id="intro">
+  <div class="intro-stage">
+    <img id="introHead" class="intro-head" src="assets/inventiva_head.png" alt="Inventiva Digital pensando">
+    <img id="introFull" class="intro-full" src="assets/inventiva_logo.png" alt="Inventiva Digital">
+  </div>
+  <script>
+  (function(){
+    var intro=document.getElementById('intro');
+    var head=document.getElementById('introHead');
+    var icons=['ic_dots','ic_chart','ic_heart','ic_play','ic_person','ic_target'];
+    var spawned=0,maxIcons=28;
+    function spawnIcon(){
+      var r=head.getBoundingClientRect();
+      var sx=r.left+r.width/2, sy=r.top+r.height/2;
+      var el=document.createElement('div');
+      el.className='rain-ico';
+      el.style.backgroundImage="url(assets/"+icons[spawned%icons.length]+".png)";
+      el.style.left=sx+'px';
+      el.style.top=sy+'px';
+      var bang=(Math.random()*Math.PI*1.4)-Math.PI*1.2;
+      var br=60+Math.random()*90;
+      var bx=Math.cos(bang)*br, by=Math.sin(bang)*br-40;
+      var fx=(Math.random()*window.innerWidth-sx);
+      var fy=(window.innerHeight-sy+120);
+      el.style.setProperty('--bx',bx+'px');
+      el.style.setProperty('--by',by+'px');
+      el.style.setProperty('--fx',fx+'px');
+      el.style.setProperty('--fy',fy+'px');
+      var dur=(1.3+Math.random()*0.9);
+      el.style.animationDuration=dur+'s';
+      var size=30+Math.random()*22;
+      el.style.width=size+'px';el.style.height=size+'px';
+      intro.appendChild(el);
+      spawned++;
+      if(spawned<maxIcons) setTimeout(spawnIcon,55+Math.random()*35);
+    }
+    setTimeout(spawnIcon,950);
+    setTimeout(function(){intro.classList.add('reveal');},2050);
+    setTimeout(function(){intro.classList.add('hide');},3350);
+    setTimeout(function(){if(intro&&intro.parentNode)intro.parentNode.removeChild(intro);},4250);
+  })();
+  </script>
+</div>
+
+<header><div class="container"><nav>
+<a class="brand" href="#inicio"><img src="assets/inventiva_logo.png"><span>INVENTIVA</span></a>
+<div class="navlinks"><a href="#servicos">Serviços</a><a href="#clientes">Clientes</a><a href="#portfolio">Portfólio</a><a href="#processo">Processo</a><a href="#contato">Contato</a></div>
+<a class="btn" href="https://wa.me/5515988421504" target="_blank">WhatsApp ↗</a>
+</nav></div></header>
+
+<main id="inicio">
+<section class="hero"><div class="container" style="display:contents">
+<div class="hero-copy container">
+<h1>Ideias que <span class="gradient">movimentam</span> marcas.</h1>
+<p>Transformamos presença digital em uma marca mais profissional, estratégica e preparada para vender.</p>
+<a class="btn" href="https://wa.me/5515988421504" target="_blank">Quero transformar minha marca →</a>
+</div>
+<div class="hero-art"><img src="assets/hero_generated.png" alt="Conceito visual Inventiva Digital"></div>
+</div></section>
+
+<section id="servicos"><div class="container">
+<div class="section-kicker">O QUE FAZEMOS</div><h2 class="section-title">Sua marca pode estar fazendo mais.</h2>
+<div class="services">
+<div class="card"><div class="icon">◎</div><h3>Redes Sociais</h3><p>Conteúdo estratégico que transforma seu perfil em vendas.</p></div>
+<div class="card"><div class="icon">⌘</div><h3>Sites & Landing Pages</h3><p>Páginas rápidas, bonitas e feitas para converter.</p></div>
+<div class="card"><div class="icon">G</div><h3>Google & Presença Local</h3><p>Apareça para quem já está procurando por você.</p></div>
+<div class="card"><div class="icon">↗</div><h3>Tráfego Pago</h3><p>Anúncios certeiros para atrair mais clientes.</p></div>
+<div class="card"><div class="icon"><img src="assets/google_analytics.svg" alt=""></div><h3>Google Analytics</h3><p>Dados claros para decisões mais inteligentes.</p></div>
+<div class="card"><div class="icon">₿</div><h3>Contabilidade</h3><p>Suporte contábil para crescer com mais segurança.</p></div>
+</div>
+</div></section>
+
+<section id="clientes"><div class="container">
+<div class="section-kicker">CONFIANÇA</div><h2 class="section-title">Empresas que já confiaram na Inventiva.</h2>
+<div class="clients">
+<div class="client"><img src="assets/marcondes_logo.png" alt="Dedetizadora Marcondes"></div>
+<div class="client"><img src="assets/borto_lotti.png" alt="Borto Lotti"></div>
+<div class="client"><img src="assets/big_dog_logo.jpg" alt="Big Dog"></div>
+<div class="client"><img src="assets/ws_manutencoes.png" alt="WS Manutenções"></div>
+</div>
+</div></section>
+
+<section id="portfolio"><div class="container case">
+<div class="case-img"><img src="assets/marcondes_preview.png" alt="Demonstrativo do site da Dedetizadora Marcondes"></div>
+<div><div class="section-kicker">CASE EM DESTAQUE</div><h2 class="section-title">Do conceito à experiência digital.</h2><h3>Landing Page para negócio local</h3><p class="muted">Estrutura criada para apresentar serviços de forma profissional, facilitar o contato pelo WhatsApp e transformar visitas em oportunidades.</p>
+<ul class="checks"><li>Design moderno e responsivo</li><li>Informações organizadas</li><li>Botão de WhatsApp em destaque</li><li>Foco em conversão</li></ul>
+<a class="btn" href="https://wa.me/5515988421504" target="_blank">Quero um projeto assim →</a></div>
+</div></section>
+
+<section><div class="container">
+<div class="section-kicker">FERRAMENTAS & PERFORMANCE</div><h2 class="section-title">Marketing que também pode ser medido.</h2><p class="muted">Não basta aparecer. É preciso acompanhar o que acontece depois do clique.</p>
+<div class="tools">
+<div class="tool"><img src="assets/google_ads.svg"><div><strong>Google Ads</strong><span>Campanhas de tráfego pago, pesquisa e geração de oportunidades.</span></div></div>
+<div class="tool"><img src="assets/google_analytics.svg"><div><strong>Google Analytics</strong><span>Acompanhamento de acessos, comportamento e conversões.</span></div></div>
+</div></div></section>
+
+<section id="processo"><div class="container">
+<div class="section-kicker">NOSSO PROCESSO</div><h2 class="section-title">Da ideia ao resultado.</h2>
+<div class="process">
+<div class="step"><div class="num">01</div><h4>Diagnóstico</h4><p>Entendemos o negócio e identificamos oportunidades.</p></div>
+<div class="step"><div class="num">02</div><h4>Estratégia</h4><p>Definimos posicionamento, comunicação e objetivos.</p></div>
+<div class="step"><div class="num">03</div><h4>Criação</h4><p>Produzimos os materiais e estruturamos sua presença.</p></div>
+<div class="step"><div class="num">04</div><h4>Publicação</h4><p>Colocamos o conteúdo no ar e conectamos sua marca ao público.</p></div>
+<div class="step"><div class="num">05</div><h4>Análise</h4><p>Monitoramos os resultados e identificamos oportunidades.</p></div>
+<div class="step"><div class="num">06</div><h4>Evolução</h4><p>Ajustamos e melhoramos sempre que necessário.</p></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="section-kicker">POR QUE A INVENTIVA?</div><h2 class="section-title">Não acreditamos em conteúdo por conteúdo.</h2><p class="muted" style="max-width:680px">Toda marca tem uma história. Nosso trabalho é encontrar a melhor forma de fazer essa história chegar às pessoas certas.</p>
+<div class="quote-grid" style="margin-top:40px">
+<div class="quote"><p><b>Estratégia antes da criação.</b><br>Uma ideia só funciona quando existe direção.</p></div>
+<div class="quote"><p><b>Comunicação pensada para o público.</b><br>Conteúdo precisa falar com quem compra.</p></div>
+<div class="quote"><p><b>Soluções acessíveis.</b><br>Pequenos negócios também podem ter presença profissional.</p></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="section-kicker">DEPOIMENTOS</div><h2 class="section-title">O que nossos clientes dizem.</h2>
+<div class="quote-grid">
+<div class="quote"><p>“A Inventiva trouxe mais visibilidade para o nosso negócio e organizou toda a nossa presença digital.”</p><small>Dedetizadora Marcondes</small></div>
+<div class="quote"><p>“Profissionalismo, agilidade e criatividade. A equipe entende de verdade o que faz.”</p><small>Borto Lotti Pizzaria</small></div>
+<div class="quote"><p>“O site ficou incrível! Além de bonito, é funcional e já recebemos vários contatos.”</p><small>Projeto digital</small></div>
+</div></div></section>
+
+<section id="contato"><div class="container"><div class="cta"><div><h2>Sua próxima ideia pode movimentar sua marca.</h2><p>Vamos criar?</p></div><a class="btn" href="https://wa.me/5515988421504" target="_blank">Falar com a Inventiva →</a></div></div></section>
+</main>
+
+<footer><div class="container footer-row">
+<div class="footer-brand"><img src="assets/inventiva_logo.png"><div><b>INVENTIVA DIGITAL</b><br><small>Ideias que movimentam marcas.</small></div></div>
+<div>© 2026 Inventiva Digital</div>
+</div></footer>
+</body></html>
